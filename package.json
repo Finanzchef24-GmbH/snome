@@ -1,0 +1,25 @@
+{
+  "name": "snome",
+  "version": "1.0.0",
+  "description": "Control your SNOM VoIP phones with nodejs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vlad.barboni@finanzchef24.de",
+  "license": "ISC",
+  "dependencies": {
+    "@fc24/config": "0.0.8",
+    "bluebird": "3.1.5",
+    "commander": "2.9.0",
+    "netmask": "1.0.5",
+    "netrange": "0.0.2",
+    "request-promise": "2.0.0"
+  },
+  "config": {
+    "snom": {
+      "user": "admin",
+      "password": "0000"
+    }
+  }
+}
