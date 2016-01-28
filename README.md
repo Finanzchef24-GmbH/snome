@@ -13,6 +13,10 @@ npm i -S snome
 ```
 
 ## Usage
+### Global package
+As a global package, get help by running ```snome -h```.
+
+### Local package
 Call ```executeCommand(command, ip, args)``` with one of the following currently supported commands: key,dial,reboot,reset,upgrade as first argument.
 
 The seconds argument is the ip of the phone. The third parameter is an array of parameters which should be passed on to the snom command, according to the snom documentation:
