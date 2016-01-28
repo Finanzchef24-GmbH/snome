@@ -10,7 +10,8 @@ var snomConfig = config('snom'),
         dial: '/command.htm?number=%s&outgoing_uri=%s',
         reboot: '/advanced_update.htm?reboot=Reboot',
         reset: '/advanced_update.htm?reset=Reset',
-        upgrade: '/dummy.htm?swload=load&firmware=%s'
+        upgrade: '/dummy.htm?swload=load&firmware=%s',
+        ring: '/line_login.htm?PLAY_RINGER:%s=+Ringer'
     },
     acceptedKeys = /CANCEL|ENTER|OFFHOOK|ONHOOK|RIGHT|LEFT|UP|DOWN|VOLUME_UP|VOLUME_DOWN|MENU|REDIAL|DND|REC|F[1-4]|SPEAKER|HEADSET|TRANSFER|F_HOLD|[0-9]|P^([1-9]|1[0-5])/;
 
@@ -18,6 +19,7 @@ function validateArgs(command, args) {
     if (command === 'key') {
         return acceptedKeys.test(args[0]);
     }
+    return true;
 }
 
 function executeCommand(type, ip, args) {
