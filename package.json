@@ -1,6 +1,6 @@
 {
   "name": "snome",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Control your SNOM VoIP phones with nodejs.",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,13 @@
     "@fc24/config": "0.0.8",
     "bluebird": "3.1.5",
     "commander": "2.9.0",
+    "lodash": "4.0.1",
     "netmask": "1.0.5",
     "netrange": "0.0.2",
     "request-promise": "2.0.0"
+  },
+  "bin": {
+    "snome": "./cli.js"
   },
   "config": {
     "snom": {

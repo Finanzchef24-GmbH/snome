@@ -6,11 +6,19 @@ var util = require('util'),
 
 var snomConfig = config('snom'),
     urls = {
+        key: '/command.htm?key=%s',
         dial: '/command.htm?number=%s&outgoing_uri=%s',
         reboot: '/advanced_update.htm?reboot=Reboot',
         reset: '/advanced_update.htm?reset=Reset',
         upgrade: '/dummy.htm?swload=load&firmware=%s'
-    };
+    },
+    acceptedKeys = /CANCEL|ENTER|OFFHOOK|ONHOOK|RIGHT|LEFT|UP|DOWN|VOLUME_UP|VOLUME_DOWN|MENU|REDIAL|DND|REC|F[1-4]|SPEAKER|HEADSET|TRANSFER|F_HOLD|[0-9]|P^([1-9]|1[0-5])/;
+
+function validateArgs(command, args) {
+    if (command === 'key') {
+        return acceptedKeys.test(args[0]);
+    }
+}
 
 function executeCommand(type, ip, args) {
     var url,
@@ -18,7 +26,13 @@ function executeCommand(type, ip, args) {
         command = urls[type];
 
     if (!command) {
-        throw new Error('command not supported');
+        console.error('Command ' + type + ' not supported');
+        process.exit(1);
+    }
+
+    if (!validateArgs(type, args)) {
+        console.error('Arguments not permitted');
+        process.exit(1)
     }
 
     command = util.format.bind(null, urls[type]).apply(null, args);
@@ -31,5 +45,6 @@ function executeCommand(type, ip, args) {
 }
 
 module.exports = {
-    executeCommand
+    executeCommand,
+    urls
 };
