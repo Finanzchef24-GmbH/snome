@@ -9,7 +9,7 @@
   "author": "vlad.barboni@finanzchef24.de",
   "license": "ISC",
   "dependencies": {
-    "@fc24/config": "0.0.8",
+    "@finanzchef24gmbh/config": "0.x.x",
     "bluebird": "3.1.5",
     "commander": "2.9.0",
     "lodash": "4.0.1",
